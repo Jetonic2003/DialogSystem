@@ -28,7 +28,7 @@ def get_response(client, messages):
 
 @app.route('/', methods=['GET'])
 def main():
-    return render_template('index.html')
+    return render_template('chat.html')
 
 
 @app.route('/get_response', methods=['POST'])
