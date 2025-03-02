@@ -2,11 +2,13 @@
 <!doctype html>
 <html>
 <head>
-	<title>对话系统</title>
-	<meta charset="utf-8">
+    <title>对话系统</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
     <style>        .chat-container {
             height: 80vh; /* 设置聊天容器的高度 */
             overflow-y: auto; /* 添加滚动条 */
@@ -44,141 +46,138 @@
     </style>
 </head>
 <body>
-	<div class="container-fluid h-100">
-    <div class="row h-100">
-        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-      <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-      <span class="fs-4">邓哲天 示例代码</span>
-    </a>
-    <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
-      <li class="nav-item">
-        <a href="#" class="nav-link active" aria-current="page">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-          Home
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link link-dark">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-          Dashboard
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link link-dark">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-          Orders
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link link-dark">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-          Products
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link link-dark">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-          Customers
-        </a>
-      </li>
-    </ul>
-    <hr>
-    <div class="dropdown">
-      <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong>mdo</strong>
-      </a>
-      <ul class="dropdown-menu text-small shadow">
-        <li><a class="dropdown-item" href="#">New project...</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
-      </ul>
-    </div>
-  </div>
-        <!-- 左侧栏，用于放置其他内容 -->
-        <div class="col-md-4 bg-light">
-            <h5 class="text-center mt-3">其他内容区域</h5>
-            <!-- 这里可以放置其他内容，比如联系人列表等 -->
-        </div>
-        <!-- 右侧栏，对话主体 -->
-        <div class="col-md-6">
-            <div class="chat-container bg-white">
-                <div class="chat-messages" id="chat-messages">
-                    <!-- 对话消息将在这里显示 -->
-                </div>
+    <div class="container-fluid h-100">
+        <div class="row h-100">
+            <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                    <span class="fs-4">邓哲天 示例代码</span>
+                </a>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link link-dark" aria-current="page">
+                            清空聊天内容
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link link-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            语文学科
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">Dashboard 1</a></li>
+                            <li><a href="#" class="dropdown-item">Dashboard 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link link-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            数学学科
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">Order 1</a></li>
+                            <li><a href="#" class="dropdown-item">Order 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link link-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            英语学科
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">Product 1</a></li>
+                            <li><a href="#" class="dropdown-item">Product 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link link-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            物理学科
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">Customer 1</a></li>
+                            <li><a href="#" class="dropdown-item">Customer 2</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <hr>
             </div>
-            <div class="chat-input">
-                <div class="input-group">
-                    <textarea class="form-control" placeholder="输入消息..." id="user-input" onkeydown="handleKeyDown(event)"></textarea>
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="button" onclick="SendMessage()">发送</button>
+            <!-- 左侧栏，用于放置其他内容 -->
+            <div class="col-md-4 bg-light">
+                <h5 class="text-center mt-3">其他内容区域</h5>
+                <!-- 这里可以放置其他内容，比如联系人列表等 -->
+            </div>
+            <!-- 右侧栏，对话主体 -->
+            <div class="col-md-6">
+                <div class="chat-container bg-white">
+                    <div class="chat-messages" id="chat-messages">
+                        <!-- 对话消息将在这里显示 -->
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <div class="input-group">
+                        <textarea class="form-control" placeholder="输入消息..." id="user-input" onkeydown="handleKeyDown(event)"></textarea>
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button" onclick="SendMessage()">发送</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<script>    function SendMessage() {
-    var message = $('#user-input').val().trim();
-    if (message === '') {
-        return; // 如果消息为空，则不发送
-    }
+    <script>        function SendMessage() {
+            var message = $('#user-input').val().trim();
+            if (message === '') {
+                return; // 如果消息为空，则不发送
+            }
 
-    // 将换行符转换为 <br> 标签
-    var formattedMessage = message.replace(/\n/g, '<br>');
+            // 将换行符转换为 <br> 标签
+            var formattedMessage = message.replace(/\n/g, '<br>');
 
-    // 创建一个新的用户消息元素
-    var userMessageElement = $('<div class="message user-message"></div>');
-    userMessageElement.html(formattedMessage);
+            // 创建一个新的用户消息元素
+            var userMessageElement = $('<div class="message user-message"></div>');
+            userMessageElement.html(formattedMessage);
 
-    // 将用户消息元素添加到聊天消息容器中
-    $('#chat-messages').append(userMessageElement);
+            // 将用户消息元素添加到聊天消息容器中
+            $('#chat-messages').append(userMessageElement);
 
-    // 清空输入框
-    $('#user-input').val('');
+            // 清空输入框
+            $('#user-input').val('');
 
-    // 发送 AJAX 请求获取 DeepSeek 回复
-    $.ajax({
-        type: 'POST',
-        url: '/get_response',
-        data: JSON.stringify({ message: message }),
-        contentType: 'application/json',
-        success: function(response) {
-            var botMessage = response.bot_message;
-            var botMessageElement = $('<div class="message bot-message"></div>');
-            $('#chat-messages').append(botMessageElement);
+            // 发送 AJAX 请求获取 DeepSeek 回复
+            $.ajax({
+                type: 'POST',
+                url: '/get_response',
+                data: JSON.stringify({ message: message }),
+                contentType: 'application/json',
+                success: function(response) {
+                    var botMessage = response.bot_message;
+                    var botMessageElement = $('<div class="message bot-message"></div>');
+                    $('#chat-messages').append(botMessageElement);
 
-            // 流式输出机器人回复
-            var index = 0;
-            var interval = setInterval(function() {
-                if (index < botMessage.length) {
-                    botMessageElement.append(botMessage[index]);
-                    index++;
-                    // 滚动到聊天容器的底部
-                    $('.chat-container').scrollTop($('.chat-container')[0].scrollHeight);
-                } else {
-                    clearInterval(interval);
+                    // 流式输出机器人回复
+                    var index = 0;
+                    var interval = setInterval(function() {
+                        if (index < botMessage.length) {
+                            botMessageElement.append(botMessage[index]);
+                            index++;
+                            // 滚动到聊天容器的底部
+                            $('.chat-container').scrollTop($('.chat-container')[0].scrollHeight);
+                        } else {
+                            clearInterval(interval);
+                        }
+                    }, 50); // 每50毫秒输出一个字符
+                },
+                error: function(error) {
+                    console.error('Error:', error);
                 }
-            }, 50); // 每50毫秒输出一个字符
-        },
-        error: function(error) {
-            console.error('Error:', error);
+            });
         }
-    });
-}
 
-    function handleKeyDown(event) {
-        if (event.key === 'Enter') {
-            if (!event.shiftKey) {
-                event.preventDefault(); // 阻止默认的换行行为
-                SendMessage();
+        function handleKeyDown(event) {
+            if (event.key === 'Enter') {
+                if (!event.shiftKey) {
+                    event.preventDefault(); // 阻止默认的换行行为
+                    SendMessage();
+                }
             }
         }
-    }
-</script>
+    </script>
 </body>
 </html>
