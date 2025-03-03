@@ -73,8 +73,8 @@
                             数学学科
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#" class="dropdown-item">Order 1</a></li>
-                            <li><a href="#" class="dropdown-item">Order 2</a></li>
+                            <li><a href="#" class="dropdown-item" onclick="sendToChat(this)">Order 1</a></li>
+                            <li><a href="#" class="dropdown-item" onclick="sendToChat(this)">Order 2</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -89,6 +89,15 @@
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link link-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             物理学科
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">长度和时间</a></li>
+                            <li><a href="#" class="dropdown-item">运动的基本概念</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link link-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            化学学科
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="#" class="dropdown-item">Customer 1</a></li>
@@ -121,7 +130,13 @@
             </div>
         </div>
     </div>
-    <script>        function SendMessage() {
+    <script>
+        function sendToChat(element) {
+            var message = $(element).text().trim();
+            $('#user-input').val(message);
+        }
+
+        function SendMessage() {
             var message = $('#user-input').val().trim();
             if (message === '') {
                 return; // 如果消息为空，则不发送
