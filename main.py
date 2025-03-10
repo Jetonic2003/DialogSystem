@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from openai import OpenAI
-
+from dashscope import Application
 app = Flask(__name__, template_folder='./templates')
 
 # 初始化 OpenAI 客户端
@@ -17,11 +17,13 @@ def get_bot_response():
 
     # 获取助手回复
     try:
-        response = client.chat.completions.create(
-            model="deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
-            messages=chat_history,
+        response = Application.call(
+            # 若没有配置环境变量，可用百炼API Key将下行替换为：api_key="sk-xxx"。但不建议在生产环境中直接将API Key硬编码到代码中，以减少API Key泄露风险。
+            api_key="sk-b515b21f4d1d430493be5ce98ea040bf",
+            app_id='cb1dedf9ef44485394ff445658d030ae',  # 替换为实际的应用 ID
+            messages=chat_history
         )
-        bot_message = response.choices[0].message.content
+        bot_message = response.output.text
         chat_history.append({"role": "assistant", "content": bot_message})
         return jsonify({'bot_message': bot_message})
     except Exception as e:
