@@ -1,13 +1,6 @@
 from flask import Flask, render_template, request, jsonify
-from openai import OpenAI
 from dashscope import Application
 app = Flask(__name__, template_folder='./templates')
-
-# 初始化 OpenAI 客户端
-client = OpenAI(
-    api_key="sk-cdesjatjztaewldgotfujozwuewmovsmhspstipzgvkychjh",  # 替换自己的 API 密钥
-    base_url="https://api.siliconflow.cn/v1",
-)
 
 @app.route('/get_response', methods=['POST'])
 def get_bot_response():
