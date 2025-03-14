@@ -1,15 +1,16 @@
+
 <!doctype html>
 <html>
 <head>
     <title>对话系统</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- 引用本地Bootstrap CSS -->
+    <link type="text/css" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
-    <style>
-        .chat-container {
+    <!-- 引用本地Bootstrap JS -->
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <style>        .chat-container {
             height: 80vh; /* 设置聊天容器的高度 */
             overflow-y: auto; /* 添加滚动条 */
             padding: 10px;
@@ -39,6 +40,16 @@
             resize: none; /* 禁止调整大小 */
             height: 50px; /* 设置初始高度 */
             overflow-y: auto; /* 添加滚动条 */
+        }
+        #urlInput {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #browser {
+            width: 100%;
+            height: 700px; /* 根据需要调整高度 */
+            border: none;
         }
     </style>
 </head>
@@ -105,12 +116,14 @@
                 <hr>
             </div>
             <!-- 左侧栏，用于放置其他内容 -->
-            <div class="col-md-4 bg-light">
-                <h5 class="text-center mt-3">其他内容区域</h5>
-                <!-- 这里可以放置其他内容，比如联系人列表等 -->
+            <div class="col-md-6 bg-light">
+                <h5 class="text-center mt-3">嵌入式浏览器</h5>
+                <input type="text" id="urlInput" class="form-control mb-3" placeholder="输入网址...">
+                <button class="btn btn-primary mb-3" onclick="loadURL()">加载</button>
+                <iframe id="browser" src="https://www.example.com" width="100%" height="700px" style="border:none;"></iframe>
             </div>
             <!-- 右侧栏，对话主体 -->
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="chat-container bg-white">
                     <div class="chat-messages" id="chat-messages">
                         <!-- 对话消息将在这里显示 -->
@@ -127,8 +140,7 @@
             </div>
         </div>
     </div>
-<script>
-function SendMessage() {
+<script>function SendMessage() {
     var message = $('#user-input').val().trim();
     if (message === '') {
         return; // 如果消息为空，则不发送
@@ -216,6 +228,22 @@ function handleKeyDown(event) {
             SendMessage();
         }
     }
+}
+
+function loadURL() {
+    var url = $('#urlInput').val().trim();
+    if (url === '') {
+        alert('请输入网址');
+        return;
+    }
+
+    // 检查URL是否包含协议（http/https），如果没有则添加
+    if (!/^https?:\/\//i.test(url)) {
+        url = 'http://' + url;
+    }
+
+    // 加载URL到iframe
+    $('#browser').attr('src', url);
 }
 </script>
 
