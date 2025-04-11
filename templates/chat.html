@@ -99,8 +99,7 @@
                             物理学科
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#" class="dropdown-item">长度和时间</a></li>
-                            <li><a href="#" class="dropdown-item">运动的基本概念</a></li>
+                            <li><a href="#" class="dropdown-item" onclick="sendToChat('初中 物理 牛顿第一定律')">牛顿第一定律</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -244,6 +243,10 @@ function loadURL() {
 
     // 加载URL到iframe
     $('#browser').attr('src', url);
+}
+
+function sendToChat(message) {
+    $('#user-input').val(message);
 }
 </script>
 
